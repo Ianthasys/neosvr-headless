@@ -1,0 +1,12 @@
+version: "3"
+services:
+  steamcmd:
+    container_name: neosvr-headless
+    build:
+      context: .
+      args:
+        - STEAMBETAPASS=
+        - STEAMLOGIN=
+        - STEAMPASS=
+    tty: true
+    stdin_open: true
