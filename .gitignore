@@ -1,1 +1,6 @@
 docker-compose.yml
+/Config/Config.json
+/Logs/*
+/Libraries/*
+/nml_mods/*
+/nml_libs/*
