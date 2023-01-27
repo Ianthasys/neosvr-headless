@@ -12,10 +12,10 @@ services:
     tty: true
     stdin_open: true
     volumes:
+      - "./Scripts:/usr/games/neosvr-headless/Scripts"
       - "./Config:/usr/games/neosvr-headless/Config"
       - "./Logs:/usr/games/neosvr-headless/Logs"
       - "./Libraries:/usr/games/neosvr-headless/Libraries"
       - "./nml_mods:/usr/games/neosvr-headless/nml_mods"
       - "./nml_libs:/usr/games/neosvr-headless/nml_libs"
-      - "./Scripts:/usr/games/neosvr-headless/Scripts"
       - "/etc/localtime:/etc/localtime:ro"

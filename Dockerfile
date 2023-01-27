@@ -7,7 +7,6 @@ RUN     apt-get update && \
 # Build Arguments
 ARG     STEAMBETA="headless-client" \
         STEAMAPPID="740250" \
-        STEAMAPPDIR="/usr/games/neosvr-headless" \
         STEAMBETAPASS="" \
         STEAMLOGIN="" \
         STEAMPASS="" 
@@ -20,10 +19,10 @@ ARG     STEAMBETA="headless-client" \
 #        NML=false
 
 # Install NeosVR Headless server.
-RUN     steamcmd +force_install_dir ${STEAMAPPDIR} +login ${STEAMLOGIN} ${STEAMPASS} +app_update ${STEAMAPPID} -beta headless-client -betappassword ${BETAPASSWORD} +quit
-WORKDIR ${STEAMAPPDIR}
+RUN     steamcmd +force_install_dir /usr/games/neosvr-headless +login ${STEAMLOGIN} ${STEAMPASS} +app_update ${STEAMAPPID} -beta headless-client -betappassword ${BETAPASSWORD} +quit
+WORKDIR /usr/games/neosvr-headless
 RUN     mkdir -p Config Logs Libraries nml_mods nml_libs Scripts
 
 STOPSIGNAL SIGINT
 
-ENTRYPOINT ["/Scripts/start_neosvr.sh"]
+CMD exec mono Neos.exe -c /Config/Config.json -l /Logs
